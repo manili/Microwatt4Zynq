@@ -45,10 +45,9 @@ module s_axi_lite_sim #(
 
     reg  [DATA_WIDTH-1:0] mm_dev [0:DEV_SIZE-1];
     
-    integer              file_handle;
-    integer              addr_idx;
-    
-    localparam FILENAME   = "../../../../src/microwatt_0/fpga/simple_boot.hex";
+//    integer              file_handle;
+//    integer              addr_idx;
+//    localparam FILENAME   = "simple_boot.hex";
     
     initial begin
 //        file_handle = $fopen(FILENAME, "r");
@@ -57,6 +56,9 @@ module s_axi_lite_sim #(
 //        end
 //        $fclose(file_handle);
 
+
+        // The following is a simple memory copy program
+        // to test the PL/DDR memory transactions.
         mm_dev[32'h00][31: 0] = 32'h3c20ff00;
         mm_dev[32'h00][63:32] = 32'h3c405100;
         mm_dev[32'h01][31: 0] = 32'h3940002D;
