@@ -2,7 +2,7 @@
  * Testbench for tb
  *
  * Description:
- *   This testbench verifies the wbs2axilitem bridge module. It includes:
+ *   This testbench verifies the `s_wb_2_m_axi_lite` bridge module. It includes:
  *   - A simple behavioral AXI4-Lite slave model to respond to the DUT's requests.
  *   - Wishbone master tasks to generate read and write transactions, now handling
  *     the wbs_stall_o signal correctly.
