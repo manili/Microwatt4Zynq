@@ -1,26 +1,6 @@
-/*
- * Testbench for tb
- *
- * Description:
- *   This testbench verifies the wbs2axilitem bridge module. It includes:
- *   - A simple behavioral AXI4-Lite slave model to respond to the DUT's requests.
- *   - Wishbone master tasks to generate read and write transactions, now handling
- *     the wbs_stall_o signal correctly.
- *   - A test sequence that covers:
- *     - Basic aligned read and write.
- *     - Partial-byte writes using different `wbs_sel_i` patterns.
- *     - AXI slave error responses (SLVERR).
- *
- *   MODIFICATIONS for this version:
- *   - Testbench master now correctly holds signals steady when wbs_stall_o is asserted.
- *   - Reset is synchronous.
- *   - Addresses sent are word addresses.
- *   - **BUG FIX**: Corrected AXI slave model to properly latch the write address
- *     from the AW channel before processing the W channel data.
- */
 `timescale 1ns/1ps
 
-module tb_2;
+module tb_main;
 
     // Parameters
     localparam ADDR_WIDTH = 32;
