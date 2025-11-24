@@ -1,11 +1,3 @@
---
--- Microwatt SoC for Zynq UltraScale+ PS Bridge Integration (REVISED AND CORRECTED)
---
--- This version corrects the entity declaration by re-adding the necessary generics
--- so that it can be correctly configured by the top-level wrapper. The internal
--- logic remains stripped down for Zynq integration, with fixes applied for
--- address decoding, bus gating, reset handling, and multi-core messaging.
---
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
