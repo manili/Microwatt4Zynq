@@ -94,9 +94,9 @@ File -> New Component -> Platform -> `Create Platform Component` pops up. Now do
 - Summary
   - Click Finish
 
-Wait for platform to be created by Vitis. This may take several minutes. After the process finished, do the followings:
+Wait for the platform to be created by Vitis. This may take several minutes. After the process finished, do the followings:
 
-- Make sure on the left pan the `Vitis Explorer` is selected.
+- Make sure `Vitis Explorer` is selected on the left pan.
 - Under `VITIS COMPONENTS` window
   - Make sure `platform (if you did not change the name)` is selected.
 - Under `FLOW` window
@@ -117,3 +117,36 @@ File -> New Example -> Hello World -> Click `Create Application Component from T
   - Click Next
 - Summary
   - Click Finish
+ 
+Wait for the application to be created by Vitis. This may take several minutes. After the process finished, do the followings:
+ 
+- Make sure `Vitis Explorer` is selected on the left pan.
+- Under `VITIS COMPONENTS` window
+  - Make sure `bootloader` is selected and expanded.
+  - Expand `Settings`
+  - Click `UserConfig.cmake`, this will open correspoding window on the right side
+  - Look for `Sources` and find then hover on `helloworld.c`
+  - Click `edit` button
+  - Rename `helloworld` to `bootloader` and click `OK` button
+- Once again, under `VITIS COMPONENTS` window
+  - Make sure `bootloader` is selected and expanded.
+  - Expand `Sources` -> Expand `src`
+  - Right click on `helloworld.c` -> Click `Delete` -> Click `OK`
+  - Right click on `src` -> `Copy Path`
+
+Open your terminal and do the following:
+```
+cd <Path of folder where you cloned Microwatt4Zynq>/sw
+unzip sw_package.zip -d <Paste `src` path here>
+```
+
+Now we are all set to compile our application:
+- Make sure `Vitis Explorer` is selected on the left pan.
+- Under `VITIS COMPONENTS` window
+  - Make sure `bootloader` is selected
+- Under `FLOW` window
+  - Make sure `bootloader` is selected in front of the Component.
+  - Click `Build` button.
+- Wait for the compilation process to be finished. This may take several minutes.
+
+### Running on ZCU104
