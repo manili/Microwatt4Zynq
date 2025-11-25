@@ -16,7 +16,7 @@ You need a developing machine to develop both HW and SW on it. Here is the specs
 ### 2. Vivado & Vitis Toolsets
 Currently we are using version `2025.1` of [Vivado and Vitis toolsets](https://www.xilinx.com/member/forms/download/xef.html?filename=FPGAs_AdaptiveSoCs_Unified_SDI_2025.1_0530_0145.tar). But you can download any versions from the [official website](https://www.xilinx.com/support/download.html).
 
-### 3. Cross Compiler Toolchain for PPC64LE
+### 3. Cross Compile Toolchain for PPC64LE
 There are actually two ways to download the `powerpc64le-power8` toolchain:
 - You can download and install it from your distro. For example in Ubuntu you can do the following:
   ```
