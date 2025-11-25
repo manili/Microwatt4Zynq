@@ -42,7 +42,7 @@ git clone -b microwatt https://github.com/shenki/buildroot
 ### 6. Clone Linux Repository
 To create the Linux kernel you need to clone this repository:
 ```
-git clone ...
+git clone https://github.com/manili/linux_microwatt4zynq.git
 ```
 
 ## Generating Hardware
