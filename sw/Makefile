@@ -41,6 +41,6 @@ $(ZIP_NAME): $(HEX_FILE)
 $(HEX_FILE):
 	$(MAKE) -C $(MW_DIR) mw_welcome.hex
 
-# Clean target for this Makefile (removes the generated zip)
+# Clean target for this Makefile (removes the generated zip) 
 clean:
 	rm -f $(ZIP_NAME)
