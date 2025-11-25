@@ -81,7 +81,7 @@ File -> New Component -> Platform -> `Create Platform Component` pops up. Now do
 - Flow
   - Click `Hardware Design`
   - Click `Browse`
-  - Find `design_1_wrapper.xsa` which we had mentioned in [this section](## Generating Hardware)
+  - Find `design_1_wrapper.xsa` which we had mentioned in [this section](#generating-hardware)
   - Click `Select`
   - Click Next
 - OS and Processor
@@ -150,3 +150,72 @@ Now we are all set to compile our application:
 - Wait for the compilation process to be finished. This may take several minutes.
 
 ### Running on ZCU104
+Now we are going to program our FPGA via JTAG so make sure all switches in `SW6` are `ON` (towards the arrow), then follow these steps:
+- Connect USB2UART/JTAG port to your PC/laptop
+- Put the `SD Card` into ZCU104 board (it is empty but let's just ignore it, for now)
+- Plug power cable to the board
+- Turn on the board
+- Open your terminal and run `screen` command on it:
+```
+screen /dev/ttyUSB1 115200
+```
+
+**NOTE:** You can terminate `screen` by `Cntrl + A` then press `\`, and finally press `y`.
+
+Now let's switch back to your `Vitis` while the Workspace is opened:
+- Make sure `Vitis Explorer` is selected on the left pan.
+- Under `VITIS COMPONENTS` window
+  - Make sure `bootloader` is selected
+- Under `FLOW` window
+  - Make sure `bootloader` is selected in front of the Component.
+  - Click `Run` button.
+- Wait for the process to be finished. This may take several seconds and you can check the progress at the bottom at status bar.
+
+Now get back to your terminal where you had opened a `screen` connection. You should see something like the following:
+```
+Zynq MP First Stage Boot Loader 
+Release 2025.1   Nov  9 2025  -  19:22:42
+PMU-FW is not running, certain applications may not be supported.
+Downloading bootloader to the DRAM...
+Successfully downloaded bootloader to the DRAM at 0x20000000!
+Downloading Linux ELF file to the DRAM...
+Starting ELF read from SD card...
+Initializing SDPS driver...
+SDPS driver and card initialized successfully.
+Reading 7340032 bytes from sector offset 0 to address 0x30000000
+ELF file read from SD card successfully.
+Successfully downloaded ELF file to the DRAM at 0x30000000!
+Extracting Linux ELF file to the DRAM...
+Successfully extracted ELF file to the DRAM!
+Configuring Microwatt for booting...
+Successfully configured Microwatt!
+Booting up Microwatt from bootloader at 0x20000000...
+--------------------------------------------------
+
+
+   .oOOo.     
+ ."      ". 
+ ;  .mw.  ;   Microwatt, it works.
+  . '  ' .    
+   \ || /    
+    ;..;      
+    ;..;      
+    `ww'      
+
+
+Function <my_printf> is located at 0x00001354.
+Executing: *(0x01700000) --> 0x480000d0.
+Press any key to continue...
+```
+
+Congratulations! Now we know `Microwatt` is working perfectly fine in our `ZCU104` (Zynq US+) platform.
+
+## Use Buildroot to Create a Userspace
+A small change is required to glibc in order to support the VMX/AltiVec-less Microwatt, as float128 support is mandiatory and for this in GCC requires VSX/AltiVec. This change is included in Joel's buildroot fork, along with a defconfig. We had cloned the repository [in this step](#5-clone-buildroot-repository) Open your terminal and run the following commands on it:
+```
+# Make sure cross compiling toolchain is already in your PATH/environment
+# and the CROSS_COMPILE variable is set properly
+cd <Path of `buildroot` folder>
+make ppc64le_microwatt_defconfig
+make
+```
