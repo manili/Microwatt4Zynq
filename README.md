@@ -48,10 +48,72 @@ git clone ...
 ## Generating Hardware
 We consider that you have already downloaded and installed the Vivado & Vitis toolsets.
 
-Now open your terminal and do the following:
+Open your terminal and do the following:
 ```
 cd <Path of folder where you cloned Microwatt4Zynq>
 source <Path of folder where you installed Vivado>/settings64.sh # e.g. /opt/tools/Xilinx/2025.1/Vivado/settings64.sh
 vivado -mode tcl -source create_project.tcl
 ```
-Now you should wait until you see `Vivado%` (this may take up to 30mins or more based on your PC/laptop specifications). After that write `exit` and close the terminal window. If you open `project` folder within the `Microwatt4Zynq` folder, you should see `design_1_wrapper.xsa` which is what we need for the next step in Vitis.
+Now you should wait until you see `Vivado%` (this may take up to 30mins or more based on your PC/laptop specifications). After that, write `exit` and close the terminal window. Now, if you open `project` folder within the `Microwatt4Zynq`, you should see `design_1_wrapper.xsa` which is what we need for the next step in Vitis.
+
+## Generating Software
+In this step we are going to generate and package all required softwares for booting up any types of applications (including a simple `Hello World` or a complex `Linux Kernel`).
+
+Open your terminal and do the following:
+```
+# Make sure cross compiling toolchain is already in your PATH/environment
+# and the CROSS_COMPILE variable is set properly
+cd <Path of folder where you cloned Microwatt4Zynq>/sw
+make
+```
+These commands should result in creation of `sw_package.zip` in `sw` folder. We need this file along with `design_1_wrapper.xsa` for the next step, Vitis.
+
+## Vitis
+In this step we will use the generated files in the previous steps to create a Vitis `workspace` for our project. So open Vitis and follow the following steps.
+
+### Creating Workspace
+File -> Set Workspace ... -> Choose proper folder -> Click Open
+
+### Creating Platform Component
+File -> New Component -> Platform -> `Create Platform Component` pops up. Now do the followings (We'll consider minimum changes but you can try yourself):
+- Name and Location
+  - Click Next
+- Flow
+  - Click `Hardware Design`
+  - Click `Browse`
+  - Find `design_1_wrapper.xsa` which we had mentioned in [this section](## Generating Hardware)
+  - Click `Select`
+  - Click Next
+- OS and Processor
+  - Make sure:
+    - `Operating system` is set on `standalone`
+    - `Processor` is set on `psu_cortexa53_0`
+    - `Architecture` is set on `64-bit`
+    - `Generate Boot artifacts` is selected
+  - Click Next
+- Summary
+  - Click Finish
+
+Wait for platform to be created by Vitis. This may take several minutes. After the process finished, do the followings:
+
+- Make sure on the left pan the `Vitis Explorer` is selected.
+- Under `VITIS COMPONENTS` window
+  - Make sure `platform (if you did not change the name)` is selected.
+- Under `FLOW` window
+  - Make sure `platform (if you did not change the name)` is selected in front of the Component.
+  - Click `Build` button.
+- Wait for the compilation process to be finished. This may take several minutes.
+
+### Creating Hello World Application
+File -> New Example -> Hello World -> Click `Create Application Component from Template` button -> `Create Application Component` pops up. Now do the followings (We'll consider minimum changes but you can try yourself):
+- Name and Location
+  - Component name -> bootloader
+  - Click Next
+- Hardware
+  - Select `platform (if you did not change the name)`
+  - Click Next
+- Domain
+  - Make sure `standalone_psu_cortexa53_0` is selected.
+  - Click Next
+- Summary
+  - Click Finish
