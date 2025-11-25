@@ -1,5 +1,5 @@
 # Run Linux on Microwatt4Zynq
-This repository includes all necessary files (RTL, firmware, bootloader, etc.) to run any applications on a Microwatt resides in PL side of a Zynq processor using PS-side peripherals (e.g. DDR memory, UART, Ethernet, etc.). Right now, this repository is specifically dedicated to Zynq Ultrascale+ Family and [ZCU104 evaluation board](https://www.amd.com/en/products/adaptive-socs-and-fpgas/evaluation-boards/zcu104.html), but can be extended to Zynq-7000 series and other evaluation board with few efforts.
+This repository includes all necessary files (RTL, firmware, bootloader, etc.) to run any applications on a Microwatt resides in PL side of a Zynq processor using PS-side peripherals (e.g. DDR memory, UART, Ethernet, etc.). Right now, this repository is specifically dedicated to Zynq Ultrascale+ Family and [ZCU104 evaluation board](https://www.amd.com/en/products/adaptive-socs-and-fpgas/evaluation-boards/zcu104.html), but can be extended to Zynq-7000 series and other evaluation boards with just a few efforts.
 
 **NOTE:** The current version only suppors PS-side LPDDR4 memory and PS-side UART0. But (using the current version as a template) adding the PS-side peripherals shouldn't be that hard.
 
