@@ -45,7 +45,7 @@ To create the Linux kernel you need to clone this repository:
 git clone ...
 ```
 
-## Create Hardware
+## Generating Hardware
 We consider that you have already downloaded and installed the Vivado & Vitis toolsets.
 
 Now open your terminal and do the following:
@@ -54,4 +54,4 @@ cd <Path of folder where you cloned Microwatt4Zynq>
 source <Path of folder where you installed Vivado>/settings64.sh # e.g. /opt/tools/Xilinx/2025.1/Vivado/settings64.sh
 vivado -mode tcl -source create_project.tcl
 ```
-Now you should wait until you see `Vivado%` (this may take up to 30mins or more). After that write `exit` and close the terminal window. If you open `project` folder within the `Microwatt4Zynq` folder, you should see `design_1_wrapper.xsa` which is what we need for the next step in Vitis.
+Now you should wait until you see `Vivado%` (this may take up to 30mins or more based on your PC/laptop specifications). After that write `exit` and close the terminal window. If you open `project` folder within the `Microwatt4Zynq` folder, you should see `design_1_wrapper.xsa` which is what we need for the next step in Vitis.
