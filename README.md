@@ -6,7 +6,7 @@ This repository includes all necessary files (RTL, firmware, bootloader, etc.) t
 ## Prerequisites
 First make sure you have downloaded/cloned the following tools/repositories:
 
-### 1. Developing OS
+### 1. Developing System and OS
 You need a developing machine to develop both HW and SW on it. Here is the specs of the recommanded system for development:
 - Ubuntu 22.04.5 LTS
 - Linux Kernel v5.15
