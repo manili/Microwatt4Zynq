@@ -412,7 +412,9 @@ microwatt login: root
 # 
 ```
 
-## Acknowledgements
+## Acknowledgements and References
 - [Anton Blanchard](https://github.com/antonblanchard/microwatt)
 - [Joel Stanley](https://shenki.github.io/boot-linux-on-microwatt)
 - [Oliver O'Halloran](https://www.linkedin.com/in/oliver-o-halloran-0806ba110)
+- [AMD Adaptive Computing Wiki!](https://xilinx-wiki.atlassian.net/wiki/spaces/A/overview)
+- [Zynq UltraScale+ Devices Register Reference (UG1087)](https://docs.amd.com/r/en-US/ug1087-zynq-ultrascale-registers)
