@@ -1,7 +1,7 @@
 create_project project0 project -part xczu7ev-ffvc1156-2-e
 set_property board_part xilinx.com:zcu104:part0:1.1 [current_project]
 add_files -norecurse -scan_for_includes {rtl/execute1.vhdl rtl/decode2.vhdl rtl/insn_helpers.vhdl rtl/register_file.vhdl rtl/helpers.vhdl rtl/fpu.vhdl rtl/predecode.vhdl rtl/xilinx-mult.vhdl rtl/plrufn.vhdl rtl/divider.vhdl rtl/soc.vhdl rtl/core_debug.vhdl rtl/icache.vhdl rtl/logical.vhdl rtl/cache_ram.vhdl rtl/dcache.vhdl rtl/fetch1.vhdl rtl/wishbone_types.vhdl rtl/microwatt_wrapper.v rtl/bitsort.vhdl rtl/s_wb_2_m_axi_lite.v rtl/xilinx-mult-32s.vhdl rtl/cr_file.vhdl rtl/mmu.vhdl rtl/decode1.vhdl rtl/pmu.vhdl rtl/loadstore1.vhdl rtl/common.vhdl rtl/countbits.vhdl rtl/wishbone_arbiter.vhdl rtl/ppc_fx_insns.vhdl rtl/nonrandom.vhdl rtl/crhelpers.vhdl rtl/core.vhdl rtl/decode_types.vhdl rtl/xics.vhdl rtl/control.vhdl rtl/microwatt_zynq_top.vhdl rtl/s_axi_lite.v rtl/utils.vhdl rtl/rotator.vhdl rtl/writeback.vhdl}
-add_files -fileset sim_1 -norecurse -scan_for_includes {sim/m_wb.v sim/testbench_2.v sim/testbench_1.v sim/s_axi_lite_sim.v}
+add_files -fileset sim_1 -norecurse -scan_for_includes {sim/m_wb.v sim/testbench_main.v sim/testbench_1.v sim/s_axi_lite_sim.v}
 import_files -force -norecurse
 update_compile_order -fileset sources_1
 update_compile_order -fileset sim_1
