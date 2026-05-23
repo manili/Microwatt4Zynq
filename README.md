@@ -54,7 +54,7 @@ cd <Path of folder where you cloned Microwatt4Zynq>
 source <Path of folder where you installed Vivado>/settings64.sh # e.g. /opt/tools/Xilinx/2025.1/Vivado/settings64.sh
 vivado -mode tcl -source create_project.tcl
 ```
-Now you should wait until you see `Vivado%` (this may take up to 30mins or more based on your PC/laptop specifications). After that, write `exit` and close the terminal window. Now, if you open `project` folder within the `Microwatt4Zynq`, you should see `design_1_wrapper.xsa` which is what we need for the next step in Vitis.
+Now you should wait until you see something like `write_hw_platform:...` and `Vivado%` in the next line (this process may take more than 30mins based on your PC/laptop specifications). After that, write `exit` and close the terminal window. Now, if you open `project` folder within the `Microwatt4Zynq`, you should see `design_1_wrapper.xsa` which is what we need for the next step in Vitis.
 
 ## Generating Software
 In this step we are going to generate and package all required softwares for booting up any types of applications (including a simple `Hello World` or a complex `Linux Kernel`).
